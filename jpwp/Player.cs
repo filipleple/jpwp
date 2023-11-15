@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,19 +10,61 @@ namespace jpwp
     internal class Player
     {
         int xpos, ypos;
-        bool goLeft, goRight, jumping;
-
-        int jumpSpeed;
+        public bool goLeft, goRight, jumping = false;
+                
         int force;
         int score = 0;
-        int playerSpeed = 7;
-
+        
         int horizontalSpeed = 5;
-        int verticalSpeed = 3;
+        int jumpSpeed = 3;
 
         int width = 40;
         int height = 80;
 
+        public void move(List<Platform> platforms)
+        {
+            ypos += jumpSpeed;
+
+            if (goLeft == true)
+            {
+                xpos -= horizontalSpeed;
+            }
+            if (goRight == true)
+            {
+                xpos += horizontalSpeed;
+            }
+
+            if (jumping == true && force < 0)
+            {
+                jumping = false;
+            }
+
+            if (jumping == true)
+            {
+                jumpSpeed = -8;
+                force -= 1;
+            }
+            else
+            {
+                jumpSpeed = 10;
+            }
+
+
+            foreach (Platform platform in platforms)
+            {
+                if (player.Bounds.IntersectsWith(x.Bounds))
+                {
+                    force = 8;
+                    player.Top = x.Top - player.Height;
+
+                    if ((string)x.Name == "horizontalPlatform" && goLeft == false || (string)x.Name == "horizontalPlatform" && goRight == false)
+                    {
+                        player.Left -= horizontalSpeed;
+                    }
+                }
+                x.BringToFront();
+            }
+        }
 
         public void render(System.Drawing.Graphics formGraphics)
         {

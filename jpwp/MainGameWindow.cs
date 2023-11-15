@@ -34,6 +34,8 @@ namespace jpwp
         // Main loop
         private void MyTimer_Tick(object sender, EventArgs e)
         {
+            player.move(platformLayout.platforms);
+
             platformLayout.movePlatforms();
             platformLayout.generateRandomLayout();
             this.Invalidate();
@@ -61,10 +63,13 @@ namespace jpwp
                 {
                     case Keys.Up:
                     case Keys.Space:
+                        player.jumping = true;
                         break;
                     case Keys.Left:
+                        player.goLeft = true;
                         break;
                     case Keys.Right:
+                        player.goRight = true;
                         break;
                 }
             }
@@ -80,8 +85,10 @@ namespace jpwp
                     case Keys.Space:
                         break;
                     case Keys.Left:
+                        player.goLeft = false;
                         break;
                     case Keys.Right:
+                        player.goRight = false;
                         break;
                 }
             }

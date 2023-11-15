@@ -10,7 +10,7 @@ namespace jpwp
     internal class PlatformLayout
     {
         static Random rand = new Random();
-        List<Platform> platforms = new List<Platform>();        
+        public List<Platform> platforms = new List<Platform>();        
 
         public PlatformLayout() 
         {
