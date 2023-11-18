@@ -76,7 +76,11 @@ namespace jpwp
         {
             foreach (Platform platform in platforms)
             {
-                platform.ypos += GlobalConfig.PLATFORM_SPEED;
+                if (!GlobalConfig.FREEZE_PLATFORMS)
+                    platform.ypos += GlobalConfig.PLATFORM_SPEED;
+                platform.rect.X = platform.xpos;
+                platform.rect.Y = platform.ypos;
+
             }
         }
     }

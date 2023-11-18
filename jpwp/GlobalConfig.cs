@@ -12,6 +12,11 @@ namespace jpwp
         public static int SCREEN_WIDTH = 1280;
         public static int SCREEN_HEIGHT = 760;
 
+        //player
+        public static System.Drawing.Color PLAYER_COLOR = System.Drawing.Color.BlueViolet;
+        public static int PLAYER_WIDTH = 40;
+        public static int PLAYER_HEIGHT = 80;
+
         //platforms
         public static int PLATFORM_HEIGHT = 30;
         public static int ROOT_PLATFORM_X = 30;
@@ -24,5 +29,10 @@ namespace jpwp
         public static int MAX_PLATFORM_WIDTH = 200;
         public static int MIN_PLATFORM_WIDTH = 100;
         public static int PLATFORM_SPEED = 5;
+        public static System.Drawing.Color PLATFORM_COLOR = System.Drawing.Color.Aquamarine;
+
+
+        //debug
+        public static bool FREEZE_PLATFORMS = true;
     }
 }
