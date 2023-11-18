@@ -5,36 +5,31 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
 
 namespace jpwp
 {
     internal class Player
     {
-        int xpos, ypos;
-        public bool goLeft, goRight, jumping = false;
-                
-        int force;
-        int score = 0;
-        
-        int horizontalSpeed = 5;
-        int jumpSpeed = 3;
-
-        int width = GlobalConfig.PLAYER_WIDTH;
-        int height = GlobalConfig.PLAYER_HEIGHT;
-
+        public int xpos, ypos, width, height, score;
         Rect rect;
-        System.Drawing.Color color = GlobalConfig.PLAYER_COLOR;
+
+        public bool goLeft, goRight, jumping, inAirNoCollision;
+        int force, horizontalSpeed, jumpSpeed, gravity;
+        
+        System.Drawing.Color color;
 
         public void move(List<Platform> platforms)
         {
+            // TODO: fix top/side stuck to platform seemingly mid-air
+
             rect.X = xpos;
-            rect.Y = ypos;
+            rect.Y = ypos;            
 
-            ypos += jumpSpeed;
+            Console.WriteLine("jumping: " + jumping + " force: " + force + " y speed: " + horizontalSpeed + " nocollision: " + inAirNoCollision);
 
-            Console.WriteLine("jumping: " + jumping + " force: " + force + " y speed: " + horizontalSpeed);
-
+            // collision-independent segment (x axis)
             if (goLeft == true)
             {
                 xpos -= horizontalSpeed;
@@ -44,32 +39,34 @@ namespace jpwp
                 xpos += horizontalSpeed;
             }
 
-            if (jumping == true && force < 0)
-            {
-                jumping = false;
-            }
-
-            if (jumping == true)
-            {
-                jumpSpeed = -8;
-                force -= 1;
-            }
-            else
-            {
-                jumpSpeed = 10;
-            }
-
-
+            inAirNoCollision = true;
             foreach (Platform platform in platforms)
             {
                 if (rect.IntersectsWith(platform.rect))                
                 {
-                    force = 8;
-                    ypos = platform.ypos - height - 1;
-                    
+                    inAirNoCollision = false;
+                }                
+            }
+
+            // collision-dependent segment (y axis)
+            if (inAirNoCollision && !jumping)
+            {
+                ypos += gravity;
+            }
+
+            if (jumping)
+            {
+                if (force > 0)
+                {                    
+                    force--;
+                    ypos -= jumpSpeed;
 
                 }
-                
+                else
+                {
+                    jumping = false;
+                    force = GlobalConfig.PLAYER_FORCE;
+                }
             }
         }
 
@@ -83,10 +80,22 @@ namespace jpwp
         {
             this.xpos = xpos;
             this.ypos = ypos;
+            this.width = GlobalConfig.PLAYER_WIDTH;
+            this.height = GlobalConfig.PLAYER_HEIGHT;
+            this.rect = new Rect(xpos, ypos, width, height);
+
+            this.score = 0;
+
             this.goLeft = false;
             this.goRight = false;
             this.jumping = false;
-            this.rect = new Rect(xpos, ypos, width, height);
+
+            this.force = GlobalConfig.PLAYER_FORCE;
+            this.horizontalSpeed = GlobalConfig.PLAYER_X_SPEED;
+            this.jumpSpeed = GlobalConfig.PLAYER_JUMP_SPEED;
+            this.gravity = GlobalConfig.PLAYER_GRAVITY;
+
+            this.color = GlobalConfig.PLAYER_COLOR;
         }
     }
 }
