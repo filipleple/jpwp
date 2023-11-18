@@ -63,7 +63,8 @@ namespace jpwp
                 {
                     case Keys.Up:
                     case Keys.Space:
-                        player.jumping = true;
+                        if (!player.inAirNoCollision)
+                            player.jumping = true;
                         break;
                     case Keys.Left:
                         player.goLeft = true;

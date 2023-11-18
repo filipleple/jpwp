@@ -16,6 +16,10 @@ namespace jpwp
         public static System.Drawing.Color PLAYER_COLOR = System.Drawing.Color.BlueViolet;
         public static int PLAYER_WIDTH = 40;
         public static int PLAYER_HEIGHT = 80;
+        public static int PLAYER_FORCE = 15;
+        public static int PLAYER_X_SPEED = 8;
+        public static int PLAYER_JUMP_SPEED = 10;
+        public static int PLAYER_GRAVITY = 5;
 
         //platforms
         public static int PLATFORM_HEIGHT = 30;

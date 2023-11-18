@@ -5,34 +5,31 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
 
 namespace jpwp
 {
     internal class Player
     {
-        int xpos, ypos;
-        public bool goLeft, goRight, jumping, inAirNoCollision;
-
         public int score;
 
-        // TODO: standardize in config
-        int force;        
-        int horizontalSpeed = 5;
-        int jumpSpeed = 3;
-        int gravity = 5;        
-
+        int xpos, ypos, width, height;
         Rect rect;
-        int width = GlobalConfig.PLAYER_WIDTH;
-        int height = GlobalConfig.PLAYER_HEIGHT;
-        System.Drawing.Color color = GlobalConfig.PLAYER_COLOR;
+
+        public bool goLeft, goRight, jumping, inAirNoCollision;
+        int force, horizontalSpeed, jumpSpeed, gravity;
+        
+        System.Drawing.Color color;
 
         public void move(List<Platform> platforms)
         {
+            // TODO: fix top/side stuck to platform seemingly mid-air
+
             rect.X = xpos;
             rect.Y = ypos;            
 
-            Console.WriteLine("jumping: " + jumping + " force: " + force + " y speed: " + horizontalSpeed);
+            Console.WriteLine("jumping: " + jumping + " force: " + force + " y speed: " + horizontalSpeed + " nocollision: " + inAirNoCollision);
 
             // collision-independent segment (x axis)
             if (goLeft == true)
@@ -44,17 +41,60 @@ namespace jpwp
                 xpos += horizontalSpeed;
             }
 
+            inAirNoCollision = true;
             foreach (Platform platform in platforms)
             {
                 if (rect.IntersectsWith(platform.rect))                
                 {
-                    //collision
+                    inAirNoCollision = false;
                 }                
             }
 
             // collision-dependent segment (y axis)
+            if (inAirNoCollision && !jumping)
+            {
+                ypos += gravity;
+            }
+
+            if (jumping)
+            {
+                if (force > 0)
+                {                    
+                    force--;
+                    ypos -= jumpSpeed;
+
+                }
+                else
+                {
+                    jumping = false;
+                    force = GlobalConfig.PLAYER_FORCE;
+                }
+
+                /*
+                 if (force> 0)
+                {
+                    if (Collision_Bottom(pb_Player))
+                    {
+                        force = 0;
+                    }
+                    else
+                    {
+                        Force--;
+                        pb_Player.Top -= Speed_Jump;
+                    }
+                }
+                else
+                {
+                    Player_Jump = false;
+                }
+                 
+                 
+                 
+                 */
 
 
+
+            }
         }
 
         public void render(System.Drawing.Graphics formGraphics)
@@ -67,11 +107,22 @@ namespace jpwp
         {
             this.xpos = xpos;
             this.ypos = ypos;
+            this.width = GlobalConfig.PLAYER_WIDTH;
+            this.height = GlobalConfig.PLAYER_HEIGHT;
+            this.rect = new Rect(xpos, ypos, width, height);
+
+            this.score = 0;
+
             this.goLeft = false;
             this.goRight = false;
             this.jumping = false;
-            this.rect = new Rect(xpos, ypos, width, height);
-            this.score = 0;
+
+            this.force = GlobalConfig.PLAYER_FORCE;
+            this.horizontalSpeed = GlobalConfig.PLAYER_X_SPEED;
+            this.jumpSpeed = GlobalConfig.PLAYER_JUMP_SPEED;
+            this.gravity = GlobalConfig.PLAYER_GRAVITY;
+
+            this.color = GlobalConfig.PLAYER_COLOR;
         }
     }
 }
