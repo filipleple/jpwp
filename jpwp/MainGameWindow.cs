@@ -4,27 +4,30 @@ namespace jpwp
 {
     public partial class MainGameWindow : Form
     {
-        const int PLAYER_START_XPOS = 100;
-        const int PLAYER_START_YPOS = 600;
-        Player player = new Player(PLAYER_START_XPOS, PLAYER_START_YPOS);
-        PlatformLayout platformLayout = new PlatformLayout();
+        
+        Player player;
+        PlatformLayout platformLayout;
         private System.Windows.Forms.Timer myTimer;
 
-        public MainGameWindow()
+        public void startNewGame()
         {
-            InitializeComponent();
-            //generate layout
-            platformLayout.generateRandomLayout();
+            this.player = new Player(GlobalConfig.PLAYER_START_XPOS, GlobalConfig.PLAYER_START_YPOS);
+            this.platformLayout = new PlatformLayout();
+        }
 
+        public MainGameWindow()
+        {            
+            InitializeComponent();
+            
             // set main timer
             myTimer = new System.Windows.Forms.Timer();
             myTimer.Interval = 16; 
             myTimer.Tick += new EventHandler(MyTimer_Tick); 
-
-            // Start the Timer
             myTimer.Start();
 
+            startNewGame();
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -34,10 +37,15 @@ namespace jpwp
         // Main loop
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-            player.move(platformLayout.platforms);
-
-            platformLayout.movePlatforms();
             platformLayout.generateRandomLayout();
+            player.move(platformLayout.platforms);
+            platformLayout.movePlatforms();
+            
+            if(player.ypos > GlobalConfig.SCREEN_HEIGHT)
+            {
+                startNewGame();
+            }
+
             this.Invalidate();
         }
 

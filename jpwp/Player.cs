@@ -12,9 +12,7 @@ namespace jpwp
 {
     internal class Player
     {
-        public int score;
-
-        int xpos, ypos, width, height;
+        public int xpos, ypos, width, height, score;
         Rect rect;
 
         public bool goLeft, goRight, jumping, inAirNoCollision;
@@ -69,31 +67,6 @@ namespace jpwp
                     jumping = false;
                     force = GlobalConfig.PLAYER_FORCE;
                 }
-
-                /*
-                 if (force> 0)
-                {
-                    if (Collision_Bottom(pb_Player))
-                    {
-                        force = 0;
-                    }
-                    else
-                    {
-                        Force--;
-                        pb_Player.Top -= Speed_Jump;
-                    }
-                }
-                else
-                {
-                    Player_Jump = false;
-                }
-                 
-                 
-                 
-                 */
-
-
-
             }
         }
 
