@@ -11,6 +11,7 @@ namespace jpwp
 
         public void startNewGame()
         {
+            GlobalConfig.FREEZE_PLATFORMS = true;
             this.player = new Player(GlobalConfig.PLAYER_START_XPOS, GlobalConfig.PLAYER_START_YPOS);
             this.platformLayout = new PlatformLayout();
         }
@@ -72,7 +73,11 @@ namespace jpwp
                     case Keys.Up:
                     case Keys.Space:
                         if (!player.inAirNoCollision)
+                        {
                             player.jumping = true;
+                            GlobalConfig.FREEZE_PLATFORMS = false;
+                        }
+                            
                         break;
                     case Keys.Left:
                         player.goLeft = true;

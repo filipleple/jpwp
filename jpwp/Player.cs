@@ -45,6 +45,10 @@ namespace jpwp
                 if (rect.IntersectsWith(platform.rect))                
                 {
                     inAirNoCollision = false;
+                    if (!jumping)
+                    {
+                        ypos = platform.ypos - height+1;
+                    }
                 }                
             }
 
@@ -82,7 +86,7 @@ namespace jpwp
             this.ypos = ypos;
             this.width = GlobalConfig.PLAYER_WIDTH;
             this.height = GlobalConfig.PLAYER_HEIGHT;
-            this.rect = new Rect(xpos, ypos, width, height);
+            this.rect = new Rect(xpos, ypos, width, height+2);
 
             this.score = 0;
 

@@ -20,8 +20,8 @@ namespace jpwp
         public static int PLAYER_HEIGHT = 80;
         public static int PLAYER_FORCE = 15;
         public static int PLAYER_X_SPEED = 8;
-        public static int PLAYER_JUMP_SPEED = 10;
-        public static int PLAYER_GRAVITY = 5;
+        public static int PLAYER_JUMP_SPEED = 14;
+        public static int PLAYER_GRAVITY = 8;
 
         //platforms
         public static int PLATFORM_HEIGHT = 30;
@@ -34,7 +34,7 @@ namespace jpwp
         public static int MIN_PLATFORM_XPOS_DIFF = 400;
         public static int MAX_PLATFORM_WIDTH = 200;
         public static int MIN_PLATFORM_WIDTH = 100;
-        public static int PLATFORM_SPEED = 5;
+        public static int PLATFORM_SPEED = 2;
         public static System.Drawing.Color PLATFORM_COLOR = System.Drawing.Color.Aquamarine;
 
 
