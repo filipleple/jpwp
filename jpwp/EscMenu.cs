@@ -16,5 +16,52 @@ namespace jpwp
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kontynuuj_Click(object sender, EventArgs e)
+        {
+            continueGame();
+        }
+
+        private void nowagra_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainGameWindow.game.startNewGame();
+            GlobalConfig.CURRENT_VIEW = GlobalConfig.VIEWS.GAME;
+            MainGameWindow.game.BringToFront();
+
+            //MainGameWindow.game.Focus(); // -- game does not handle keys for some reason
+            this.Parent.Focus();
+        }
+
+        private void continueGame()
+        {
+            this.Hide();
+            GlobalConfig.CURRENT_VIEW = GlobalConfig.VIEWS.GAME;
+            this.Parent.BringToFront();
+            this.Parent.Focus();
+            MainGameWindow.game.pause = false;
+        }
+
+        private void EscMenu_KeyDown(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("escmenu");
+            if(e != null)
+            {
+                if (e.KeyCode == Keys.Escape)
+                {
+                    continueGame();
+                }
+            }
+        }
+
+        private void EscMenu_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

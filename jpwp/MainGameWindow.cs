@@ -5,8 +5,6 @@ namespace jpwp
     public partial class MainGameWindow : Form
     {
         public System.Windows.Forms.Timer myTimer;
-        public static Game game;
-        public static MainMenu mainMenu;
 
 
         public MainGameWindow()
@@ -19,9 +17,13 @@ namespace jpwp
             myTimer.Tick += new EventHandler(MyTimer_Tick);
             myTimer.Start();
 
+            escMenu1.SendToBack();
+            escMenu1.Enabled = false;
+            escMenu1.Visible = false;
+
             mainMenu.Focus();
-            mainMenu.BringToFront();            
-            
+            mainMenu.BringToFront();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,7 +41,8 @@ namespace jpwp
 
                     break;
                 case GlobalConfig.VIEWS.GAME:
-                    game.timerTick();
+                    if (!game.pause)
+                        game.timerTick();
                     break;
             }
 
@@ -61,7 +64,7 @@ namespace jpwp
         {
             if (e != null)
             {
-                Console.WriteLine("mgw handles keys"); 
+                Console.WriteLine("mgw handles keys");
                 switch (GlobalConfig.CURRENT_VIEW)
                 {
                     case GlobalConfig.VIEWS.MAIN_MENU:
@@ -90,5 +93,9 @@ namespace jpwp
             }
         }
 
+        private void escMenu1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

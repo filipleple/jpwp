@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Animation;
 
 namespace jpwp
 {
@@ -15,10 +16,12 @@ namespace jpwp
     {
         Player player;
         PlatformLayout platformLayout;
+        public bool pause;
         public Game()
         {
             InitializeComponent();
             startNewGame();
+            pause = false;
         }
 
         public void startNewGame()
@@ -26,6 +29,7 @@ namespace jpwp
             GlobalConfig.FREEZE_PLATFORMS = true;
             this.player = new Player(GlobalConfig.PLAYER_START_XPOS, GlobalConfig.PLAYER_START_YPOS);
             this.platformLayout = new PlatformLayout();
+            pause = false;
         }
         public void timerTick()
         {
@@ -97,6 +101,9 @@ namespace jpwp
                     case Keys.Right:
                         player.goRight = false;
                         break;
+                    case Keys.Escape:
+                        pause = true;
+                        break;
                 }
             }
         }
@@ -116,13 +123,21 @@ namespace jpwp
                         player.jumping = true;
                         GlobalConfig.FREEZE_PLATFORMS = false;
                     }
-
                     break;
                 case Keys.Left:
                     player.goLeft = true;
                     break;
                 case Keys.Right:
                     player.goRight = true;
+                    break;
+                case Keys.Escape:
+                    pause = true;
+
+                    MainGameWindow.escMenu1.Enabled = true;
+                    MainGameWindow.escMenu1.Visible = true;
+                    MainGameWindow.escMenu1.BringToFront();
+                    MainGameWindow.escMenu1.Focus();
+
                     break;
             }
         }
