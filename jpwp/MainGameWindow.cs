@@ -19,11 +19,9 @@ namespace jpwp
             myTimer.Tick += new EventHandler(MyTimer_Tick);
             myTimer.Start();
 
-            //to be moved to after calling from main menu? 
-            game = new Game();
-
-            mainMenu = new MainMenu();
-            mainMenu.Hide();
+            mainMenu.Focus();
+            mainMenu.BringToFront();            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,10 +32,11 @@ namespace jpwp
         // Main loop
         private void MyTimer_Tick(object sender, EventArgs e)
         {
+            Console.WriteLine("tick");
             switch (GlobalConfig.CURRENT_VIEW)
             {
                 case GlobalConfig.VIEWS.MAIN_MENU:
-                    
+
                     break;
                 case GlobalConfig.VIEWS.GAME:
                     game.timerTick();
@@ -52,17 +51,9 @@ namespace jpwp
         {
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
-
-            switch (GlobalConfig.CURRENT_VIEW)
-            {
-                case GlobalConfig.VIEWS.MAIN_MENU:
-                    
-                    break;
-                case GlobalConfig.VIEWS.GAME:
-                    game.render(formGraphics);
-                    break;
-            }
-
+            Console.WriteLine("rendering main window");
+            game.Visible = false;
+            game.render(formGraphics);
             formGraphics.Dispose();
         }
 
@@ -70,10 +61,11 @@ namespace jpwp
         {
             if (e != null)
             {
+                Console.WriteLine("mgw handles keys"); 
                 switch (GlobalConfig.CURRENT_VIEW)
                 {
                     case GlobalConfig.VIEWS.MAIN_MENU:
-                        
+
                         break;
                     case GlobalConfig.VIEWS.GAME:
                         game.keyDown(e);
@@ -89,7 +81,7 @@ namespace jpwp
                 switch (GlobalConfig.CURRENT_VIEW)
                 {
                     case GlobalConfig.VIEWS.MAIN_MENU:
-                        
+
                         break;
                     case GlobalConfig.VIEWS.GAME:
                         game.keyUp(e);

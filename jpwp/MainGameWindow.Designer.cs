@@ -15,16 +15,24 @@
 
         private void InitializeComponent()
         {
-            userControl11 = new MainMenu();
+            mainMenu = new MainMenu();
+            game = new Game();
             SuspendLayout();
             // 
-            // userControl11
+            // mainMenu
             // 
-            userControl11.BackColor = Color.CadetBlue;
-            userControl11.Location = new Point(0, 0);
-            userControl11.Name = "userControl11";
-            userControl11.Size = new Size(1280, 760);
-            userControl11.TabIndex = 0;
+            mainMenu.BackColor = Color.CadetBlue;
+            mainMenu.Location = new Point(0, 0);
+            mainMenu.Name = "mainMenu";
+            mainMenu.Size = new Size(1280, 760);
+            mainMenu.TabIndex = 0;
+            // 
+            // game
+            // 
+            game.Location = new Point(0, 0);
+            game.Name = "game";
+            game.Size = new Size(1280, 760);
+            game.TabIndex = 1;
             // 
             // MainGameWindow
             // 
@@ -32,7 +40,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.OldLace;
             ClientSize = new Size(1262, 713);
-            Controls.Add(userControl11);
+            Controls.Add(game);
+            Controls.Add(mainMenu);
             Name = "MainGameWindow";
             Text = "Rzutki Grzegorz";
             Load += Form1_Load;
@@ -41,7 +50,5 @@
             KeyUp += MainGameWindow_KeyUp;
             ResumeLayout(false);
         }
-
-        private MainMenu userControl11;
     }
 }

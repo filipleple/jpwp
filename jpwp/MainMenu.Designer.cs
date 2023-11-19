@@ -71,7 +71,7 @@
             wyjscie.UseVisualStyleBackColor = true;
             wyjscie.Click += wyjscie_Click;
             // 
-            // UserControl1
+            // Okno
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -80,9 +80,9 @@
             Controls.Add(slownik);
             Controls.Add(nowagra);
             Controls.Add(tytul);
-            Name = "UserControl1";
+            Name = "MainMenu";
             Size = new Size(1280, 760);
-            Load += UserControl1_Load;
+            
             ResumeLayout(false);
             PerformLayout();
         }

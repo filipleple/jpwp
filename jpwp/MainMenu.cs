@@ -28,16 +28,18 @@ namespace jpwp
             this.wyjscie.Top = this.slownik.Bottom + this.wyjscie.Height / 4;
         }
 
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
         private void nowagra_MouseClick(object sender, MouseEventArgs e)
         {
             this.Hide();
             MainGameWindow.game.startNewGame();
             GlobalConfig.CURRENT_VIEW = GlobalConfig.VIEWS.GAME;
             this.SendToBack();
+            
+            //this.Parent.BringToFront();
+            //this.Parent.Focus();
+
+            MainGameWindow.game.BringToFront();
+            //MainGameWindow.game.Focus(); // -- game does not handle keys for some reason
             this.Parent.Focus();
         }
 
