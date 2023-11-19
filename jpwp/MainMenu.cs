@@ -33,12 +33,8 @@ namespace jpwp
             this.Hide();
             MainGameWindow.game.startNewGame();
             GlobalConfig.CURRENT_VIEW = GlobalConfig.VIEWS.GAME;
-            this.SendToBack();
-            
-            //this.Parent.BringToFront();
-            //this.Parent.Focus();
-
             MainGameWindow.game.BringToFront();
+
             //MainGameWindow.game.Focus(); // -- game does not handle keys for some reason
             this.Parent.Focus();
         }

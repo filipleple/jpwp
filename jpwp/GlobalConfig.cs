@@ -15,7 +15,7 @@ namespace jpwp
         //player
         public static System.Drawing.Color PLAYER_COLOR = System.Drawing.Color.BlueViolet;
         public static int PLAYER_START_XPOS = 100;
-        public static int PLAYER_START_YPOS = 600;
+        public static int PLAYER_START_YPOS = 550;
         public static int PLAYER_WIDTH = 40;
         public static int PLAYER_HEIGHT = 80;
         public static int PLAYER_FORCE = 15;
@@ -26,7 +26,7 @@ namespace jpwp
         //platforms
         public static int PLATFORM_HEIGHT = 30;
         public static int ROOT_PLATFORM_X = 30;
-        public static int ROOT_PLATFORM_Y = SCREEN_HEIGHT - PLATFORM_HEIGHT;
+        public static int ROOT_PLATFORM_Y = SCREEN_HEIGHT - PLATFORM_HEIGHT*4;
         public static int ROOT_PLATFORM_WIDTH = 150;
         public static int MAX_PLATFORM_YPOS_DIFF = 150;
         public static int MIN_PLATFORM_YPOS_DIFF = 100;
