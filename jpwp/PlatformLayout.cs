@@ -9,6 +9,9 @@ namespace jpwp
 {
     internal class PlatformLayout
     {
+        // TODO: maybe revise how much we generateLayout,
+        // try to eliminate the flicker
+
         static Random rand = new Random();
         public List<Platform> platforms = new List<Platform>();        
 

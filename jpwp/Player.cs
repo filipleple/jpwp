@@ -55,6 +55,8 @@ namespace jpwp
 
             foreach (Platform platform in platforms)
             {
+                // TODO: ignore platforms that are too high
+
                 if (rect.IntersectsWith(platform.rect))                
                 {                    
                     inAirNoCollision = false;

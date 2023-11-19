@@ -15,14 +15,33 @@
 
         private void InitializeComponent()
         {
+            mainMenu = new MainMenu();
+            game = new Game();
             SuspendLayout();
+            // 
+            // mainMenu
+            // 
+            mainMenu.BackColor = Color.CadetBlue;
+            mainMenu.Location = new Point(0, 0);
+            mainMenu.Name = "mainMenu";
+            mainMenu.Size = new Size(1280, 760);
+            mainMenu.TabIndex = 0;
+            // 
+            // game
+            // 
+            game.Location = new Point(0, 0);
+            game.Name = "game";
+            game.Size = new Size(1280, 760);
+            game.TabIndex = 1;
             // 
             // MainGameWindow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.OldLace;
-            ClientSize = new Size(1280, 760);
+            ClientSize = new Size(1262, 713);
+            Controls.Add(game);
+            Controls.Add(mainMenu);
             Name = "MainGameWindow";
             Text = "Rzutki Grzegorz";
             Load += Form1_Load;

@@ -4,29 +4,24 @@ namespace jpwp
 {
     public partial class MainGameWindow : Form
     {
-        
-        Player player;
-        PlatformLayout platformLayout;
-        private System.Windows.Forms.Timer myTimer;
+        public System.Windows.Forms.Timer myTimer;
+        public static Game game;
+        public static MainMenu mainMenu;
 
-        public void startNewGame()
-        {
-            GlobalConfig.FREEZE_PLATFORMS = true;
-            this.player = new Player(GlobalConfig.PLAYER_START_XPOS, GlobalConfig.PLAYER_START_YPOS);
-            this.platformLayout = new PlatformLayout();
-        }
 
         public MainGameWindow()
-        {            
+        {
             InitializeComponent();
-            
+
             // set main timer
             myTimer = new System.Windows.Forms.Timer();
-            myTimer.Interval = 16; 
-            myTimer.Tick += new EventHandler(MyTimer_Tick); 
+            myTimer.Interval = 16;
+            myTimer.Tick += new EventHandler(MyTimer_Tick);
             myTimer.Start();
 
-            startNewGame();
+            mainMenu.Focus();
+            mainMenu.BringToFront();            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,17 +29,18 @@ namespace jpwp
 
         }
 
-
         // Main loop
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-            platformLayout.generateRandomLayout();
-            player.move(platformLayout.platforms);
-            platformLayout.movePlatforms();
-            
-            if(player.ypos > GlobalConfig.SCREEN_HEIGHT)
+            Console.WriteLine("tick");
+            switch (GlobalConfig.CURRENT_VIEW)
             {
-                startNewGame();
+                case GlobalConfig.VIEWS.MAIN_MENU:
+
+                    break;
+                case GlobalConfig.VIEWS.GAME:
+                    game.timerTick();
+                    break;
             }
 
             this.Invalidate();
@@ -53,14 +49,11 @@ namespace jpwp
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
-
-            //renders section
-            player.render(formGraphics);
-            platformLayout.renderPlatforms(formGraphics);
-
+            Console.WriteLine("rendering main window");
+            game.Visible = false;
+            game.render(formGraphics);
             formGraphics.Dispose();
         }
 
@@ -68,22 +61,14 @@ namespace jpwp
         {
             if (e != null)
             {
-                switch (e.KeyCode)
+                Console.WriteLine("mgw handles keys"); 
+                switch (GlobalConfig.CURRENT_VIEW)
                 {
-                    case Keys.Up:
-                    case Keys.Space:
-                        if (!player.inAirNoCollision)
-                        {
-                            player.jumping = true;
-                            GlobalConfig.FREEZE_PLATFORMS = false;
-                        }
-                            
+                    case GlobalConfig.VIEWS.MAIN_MENU:
+
                         break;
-                    case Keys.Left:
-                        player.goLeft = true;
-                        break;
-                    case Keys.Right:
-                        player.goRight = true;
+                    case GlobalConfig.VIEWS.GAME:
+                        game.keyDown(e);
                         break;
                 }
             }
@@ -93,19 +78,17 @@ namespace jpwp
         {
             if (e != null)
             {
-                switch (e.KeyCode)
+                switch (GlobalConfig.CURRENT_VIEW)
                 {
-                    case Keys.Up:
-                    case Keys.Space:
+                    case GlobalConfig.VIEWS.MAIN_MENU:
+
                         break;
-                    case Keys.Left:
-                        player.goLeft = false;
-                        break;
-                    case Keys.Right:
-                        player.goRight = false;
+                    case GlobalConfig.VIEWS.GAME:
+                        game.keyUp(e);
                         break;
                 }
             }
         }
+
     }
 }
