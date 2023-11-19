@@ -32,6 +32,12 @@ namespace jpwp
             {
                 startNewGame();
             }
+
+            else if (player.ypos < 0)
+            {
+                player.ypos = 0;
+                player.jumping = false;
+            }
         }
 
         public void render(System.Drawing.Graphics formGraphics)

@@ -9,6 +9,8 @@ namespace jpwp
 {
     internal class MainMenu
     {
+        // TODO: maybe make an interface/abstract class for all the
+        // different menus
         public MainMenu() 
         { 
         
