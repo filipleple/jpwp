@@ -47,7 +47,7 @@ namespace jpwp
             DICT
         }
 
-        public static VIEWS CURRENT_VIEW = VIEWS.GAME;
+        public static VIEWS CURRENT_VIEW = VIEWS.MAIN_MENU;
 
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace jpwp
 {
-    internal class Game
+    public class Game
     {
         Player player;
         PlatformLayout platformLayout;

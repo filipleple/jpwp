@@ -4,24 +4,26 @@ namespace jpwp
 {
     public partial class MainGameWindow : Form
     {
-        private System.Windows.Forms.Timer myTimer;
-        Game game;
-        MainMenu mainMenu;
+        public System.Windows.Forms.Timer myTimer;
+        public static Game game;
+        public static MainMenu mainMenu;
+
 
         public MainGameWindow()
-        {            
+        {
             InitializeComponent();
-            
+
             // set main timer
             myTimer = new System.Windows.Forms.Timer();
-            myTimer.Interval = 16; 
-            myTimer.Tick += new EventHandler(MyTimer_Tick); 
+            myTimer.Interval = 16;
+            myTimer.Tick += new EventHandler(MyTimer_Tick);
             myTimer.Start();
 
             //to be moved to after calling from main menu? 
             game = new Game();
 
             mainMenu = new MainMenu();
+            mainMenu.Hide();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,13 +36,13 @@ namespace jpwp
         {
             switch (GlobalConfig.CURRENT_VIEW)
             {
-                case GlobalConfig.VIEWS.MAIN_MENU: 
-                    mainMenu.timerTick(); 
+                case GlobalConfig.VIEWS.MAIN_MENU:
+                    
                     break;
                 case GlobalConfig.VIEWS.GAME:
                     game.timerTick();
                     break;
-            }            
+            }
 
             this.Invalidate();
         }
@@ -54,13 +56,13 @@ namespace jpwp
             switch (GlobalConfig.CURRENT_VIEW)
             {
                 case GlobalConfig.VIEWS.MAIN_MENU:
-                    mainMenu.render();
+                    
                     break;
                 case GlobalConfig.VIEWS.GAME:
                     game.render(formGraphics);
                     break;
             }
-            
+
             formGraphics.Dispose();
         }
 
@@ -71,12 +73,12 @@ namespace jpwp
                 switch (GlobalConfig.CURRENT_VIEW)
                 {
                     case GlobalConfig.VIEWS.MAIN_MENU:
-                        mainMenu.keyDown(e);
+                        
                         break;
                     case GlobalConfig.VIEWS.GAME:
                         game.keyDown(e);
                         break;
-                }                
+                }
             }
         }
 
@@ -87,7 +89,7 @@ namespace jpwp
                 switch (GlobalConfig.CURRENT_VIEW)
                 {
                     case GlobalConfig.VIEWS.MAIN_MENU:
-                        mainMenu.keyUp(e);
+                        
                         break;
                     case GlobalConfig.VIEWS.GAME:
                         game.keyUp(e);
