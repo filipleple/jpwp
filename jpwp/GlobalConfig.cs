@@ -36,9 +36,18 @@ namespace jpwp
         public static int MIN_PLATFORM_WIDTH = 100;
         public static int PLATFORM_SPEED = 2;
         public static System.Drawing.Color PLATFORM_COLOR = System.Drawing.Color.Aquamarine;
-
-
-        //debug
         public static bool FREEZE_PLATFORMS = true;
+
+
+        public enum VIEWS
+        {
+            MAIN_MENU=0,
+            GAME,
+            ESC_MENU,
+            DICT
+        }
+
+        public static VIEWS CURRENT_VIEW = VIEWS.GAME;
+
     }
 }

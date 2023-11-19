@@ -10,8 +10,7 @@ namespace jpwp
     {
         Player player;
         PlatformLayout platformLayout;
-        private System.Windows.Forms.Timer myTimer;
-
+        
         public Game()
         {
             startNewGame();
