@@ -71,7 +71,7 @@
             wyjscie.UseVisualStyleBackColor = true;
             wyjscie.Click += wyjscie_Click;
             // 
-            // Okno
+            // MainMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -82,7 +82,6 @@
             Controls.Add(tytul);
             Name = "MainMenu";
             Size = new Size(1280, 760);
-            
             ResumeLayout(false);
             PerformLayout();
         }

@@ -33,7 +33,6 @@ namespace jpwp
         }
         public void timerTick()
         {
-            Console.WriteLine("tack");
             platformLayout.generateRandomLayout();
             player.move(platformLayout.platforms);
             platformLayout.movePlatforms();
@@ -53,7 +52,6 @@ namespace jpwp
 
         public void render(Graphics formGraphics)
         {
-            Console.WriteLine("rendering game");
             player.render(formGraphics);
             platformLayout.renderPlatforms(formGraphics);
         }
@@ -61,10 +59,8 @@ namespace jpwp
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("game handles events");
             if (e != null)
             {
-                Console.WriteLine("game handles events");
                 switch (e.KeyCode)
                 {
                     case Keys.Up:
@@ -113,7 +109,6 @@ namespace jpwp
 
         public void keyDown(KeyEventArgs e)
         {
-            Console.WriteLine("game handles events");
             switch (e.KeyCode)
             {
                 case Keys.Up:

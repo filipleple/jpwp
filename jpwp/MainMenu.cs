@@ -41,7 +41,7 @@ namespace jpwp
 
         private void wyjscie_Click(object sender, EventArgs e)
         {
-            
+            this.ParentForm.Close();
         }
     }
 }

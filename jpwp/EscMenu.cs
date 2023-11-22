@@ -49,8 +49,7 @@ namespace jpwp
 
         private void EscMenu_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("escmenu");
-            if(e != null)
+            if (e != null)
             {
                 if (e.KeyCode == Keys.Escape)
                 {
@@ -62,6 +61,11 @@ namespace jpwp
         private void EscMenu_KeyUp(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void wyjscie_Click(object sender, EventArgs e)
+        {
+            this.ParentForm.Close();
         }
     }
 }

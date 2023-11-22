@@ -5,6 +5,7 @@ namespace jpwp
     public partial class MainGameWindow : Form
     {
         public System.Windows.Forms.Timer myTimer;
+        public static DictFileParser parser;
 
 
         public MainGameWindow()
@@ -17,12 +18,16 @@ namespace jpwp
             myTimer.Tick += new EventHandler(MyTimer_Tick);
             myTimer.Start();
 
+            parser = new DictFileParser();            
+
             escMenu1.SendToBack();
             escMenu1.Enabled = false;
             escMenu1.Visible = false;
 
             mainMenu.Focus();
             mainMenu.BringToFront();
+
+            
 
         }
 
@@ -34,7 +39,6 @@ namespace jpwp
         // Main loop
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine("tick");
             switch (GlobalConfig.CURRENT_VIEW)
             {
                 case GlobalConfig.VIEWS.MAIN_MENU:
@@ -54,7 +58,6 @@ namespace jpwp
         {
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
-            Console.WriteLine("rendering main window");
             game.Visible = false;
             game.render(formGraphics);
             formGraphics.Dispose();
@@ -64,7 +67,6 @@ namespace jpwp
         {
             if (e != null)
             {
-                Console.WriteLine("mgw handles keys");
                 switch (GlobalConfig.CURRENT_VIEW)
                 {
                     case GlobalConfig.VIEWS.MAIN_MENU:
@@ -94,6 +96,11 @@ namespace jpwp
         }
 
         private void escMenu1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dictDisplay_Load(object sender, EventArgs e)
         {
 
         }

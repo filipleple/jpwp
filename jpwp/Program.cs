@@ -7,6 +7,7 @@ namespace jpwp
         {
             ApplicationConfiguration.Initialize();
             Application.Run(new MainGameWindow());
+                        
         }
     }
 }

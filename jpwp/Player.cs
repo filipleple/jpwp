@@ -59,12 +59,17 @@ namespace jpwp
 
                 if (rect.IntersectsWith(platform.rect))                
                 {                    
-                    inAirNoCollision = false;
 
-                    if (!jumping)
+                    if (ypos + height / 2 < platform.ypos &&
+                        platform.ypos > height)
                     {
+                        inAirNoCollision = false;
                         ypos = platform.ypos - height+1;
                     }
+
+
+
+
 
                     // more complex collision detection
                     //collisions = getCollisionType(rect, platform.rect);

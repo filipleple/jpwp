@@ -39,9 +39,9 @@
             // 
             pauzaLabel.AutoSize = true;
             pauzaLabel.Font = new Font("OCR A Extended", 29F, FontStyle.Regular, GraphicsUnit.Point);
-            pauzaLabel.Location = new Point(115, 37);
+            pauzaLabel.Location = new Point(131, 49);
             pauzaLabel.Name = "pauzaLabel";
-            pauzaLabel.Size = new Size(137, 40);
+            pauzaLabel.Size = new Size(172, 51);
             pauzaLabel.TabIndex = 0;
             pauzaLabel.Text = "pauza";
             pauzaLabel.Click += label1_Click;
@@ -49,21 +49,20 @@
             // wyjscie
             // 
             wyjscie.Font = new Font("OCR A Extended", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            wyjscie.Location = new Point(66, 284);
-            wyjscie.Margin = new Padding(3, 2, 3, 2);
+            wyjscie.Location = new Point(75, 379);
             wyjscie.Name = "wyjscie";
-            wyjscie.Size = new Size(248, 47);
+            wyjscie.Size = new Size(283, 63);
             wyjscie.TabIndex = 6;
             wyjscie.Text = "wyjście";
             wyjscie.UseVisualStyleBackColor = true;
+            wyjscie.Click += wyjscie_Click;
             // 
             // slownik
             // 
             slownik.Font = new Font("OCR A Extended", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            slownik.Location = new Point(66, 220);
-            slownik.Margin = new Padding(3, 2, 3, 2);
+            slownik.Location = new Point(75, 293);
             slownik.Name = "slownik";
-            slownik.Size = new Size(248, 47);
+            slownik.Size = new Size(283, 63);
             slownik.TabIndex = 5;
             slownik.Text = "słownik";
             slownik.UseVisualStyleBackColor = true;
@@ -71,10 +70,9 @@
             // nowagra
             // 
             nowagra.Font = new Font("OCR A Extended", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            nowagra.Location = new Point(66, 158);
-            nowagra.Margin = new Padding(3, 2, 3, 2);
+            nowagra.Location = new Point(75, 211);
             nowagra.Name = "nowagra";
-            nowagra.Size = new Size(248, 47);
+            nowagra.Size = new Size(283, 63);
             nowagra.TabIndex = 4;
             nowagra.Text = "nowa gra";
             nowagra.UseVisualStyleBackColor = true;
@@ -83,10 +81,9 @@
             // kontynuuj
             // 
             kontynuuj.Font = new Font("OCR A Extended", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            kontynuuj.Location = new Point(66, 97);
-            kontynuuj.Margin = new Padding(3, 2, 3, 2);
+            kontynuuj.Location = new Point(75, 129);
             kontynuuj.Name = "kontynuuj";
-            kontynuuj.Size = new Size(248, 47);
+            kontynuuj.Size = new Size(283, 63);
             kontynuuj.TabIndex = 7;
             kontynuuj.Text = "kontynuuj";
             kontynuuj.UseVisualStyleBackColor = true;
@@ -94,7 +91,7 @@
             // 
             // EscMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(kontynuuj);
@@ -102,9 +99,8 @@
             Controls.Add(slownik);
             Controls.Add(nowagra);
             Controls.Add(pauzaLabel);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "EscMenu";
-            Size = new Size(374, 360);
+            Size = new Size(427, 480);
             KeyDown += EscMenu_KeyDown;
             KeyUp += EscMenu_KeyUp;
             ResumeLayout(false);

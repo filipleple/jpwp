@@ -28,6 +28,8 @@ namespace jpwp
             {
                 platform.render(formGraphics);
             }
+
+            Console.WriteLine(platforms.Count() + " platforms");
         }
         public void generateRandomLayout()
         {
