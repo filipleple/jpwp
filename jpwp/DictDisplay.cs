@@ -26,5 +26,10 @@ namespace jpwp
         {
             richTextBox1.Lines = MainGameWindow.parser.getCorrectSpellings().ToArray();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

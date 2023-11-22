@@ -9,7 +9,7 @@ namespace jpwp
 {
     public class DictFileParser
     {
-        public string filePath = @"DICT.txt";
+        public string filePath = @"C:\Users\Lenovo\Desktop\DICT.txt";
         public string[] lines;
         static Random rand = new Random();
 

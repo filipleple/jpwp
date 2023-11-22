@@ -5,7 +5,7 @@ namespace jpwp
     public partial class MainGameWindow : Form
     {
         public System.Windows.Forms.Timer myTimer;
-        public static DictFileParser parser;
+        public static DictFileParser parser = new DictFileParser();
 
 
         public MainGameWindow()
@@ -18,8 +18,6 @@ namespace jpwp
             myTimer.Tick += new EventHandler(MyTimer_Tick);
             myTimer.Start();
 
-            parser = new DictFileParser();            
-
             escMenu1.SendToBack();
             escMenu1.Enabled = false;
             escMenu1.Visible = false;
@@ -27,7 +25,7 @@ namespace jpwp
             mainMenu.Focus();
             mainMenu.BringToFront();
 
-            
+
 
         }
 
