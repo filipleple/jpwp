@@ -12,13 +12,13 @@ namespace jpwp
         public string filePath = @"C:\Users\Lenovo\Desktop\DICT.txt";
         public string[] lines;
         static Random rand = new Random();
-
+        
         public DictFileParser() 
         {
             lines = File.ReadAllLines(filePath);
         } 
 
-        public void getRandomLine(ref string correct, List<string> randomized)
+        public void getRandomLine(ref string correct, ref List<string> randomized)
         {
             string line = lines[rand.Next(lines.Length)];
 

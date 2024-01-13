@@ -14,7 +14,7 @@ namespace jpwp
 
     public partial class Game : UserControl
     {
-        Player player;
+        public Player player;
         PlatformLayout platformLayout;
         public bool pause;
         public Game()
@@ -39,7 +39,13 @@ namespace jpwp
 
             if (player.ypos > GlobalConfig.SCREEN_HEIGHT)
             {
-                startNewGame();
+                //startNewGame();
+                pause = true;
+                MainGameWindow.quickTimeEvent1.generateNewQTE();
+                MainGameWindow.quickTimeEvent1.Enabled = true;
+                MainGameWindow.quickTimeEvent1.Visible = true;
+                MainGameWindow.quickTimeEvent1.Focus();
+                MainGameWindow.quickTimeEvent1.BringToFront();
             }
 
             else if (player.ypos < 0)
@@ -47,6 +53,8 @@ namespace jpwp
                 player.ypos = 0;
                 player.jumping = false;
             }
+
+
 
         }
 

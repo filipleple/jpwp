@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace jpwp
 {
-    internal class Platform
+    public class Platform
     {
         int height = GlobalConfig.PLATFORM_HEIGHT;
         public int width, xpos, ypos;

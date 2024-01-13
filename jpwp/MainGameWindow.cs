@@ -26,10 +26,12 @@ namespace jpwp
             dictDisplay1.Enabled = false;
             dictDisplay1.Visible = false;
 
+            quickTimeEvent1.generateNewQTE();
+            quickTimeEvent1.Enabled = false;
+            quickTimeEvent1.Visible = false;
+
             mainMenu.Focus();
             mainMenu.BringToFront();
-
-
 
         }
 

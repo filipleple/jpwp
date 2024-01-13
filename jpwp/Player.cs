@@ -18,7 +18,7 @@ enum collisionTypes
 
 namespace jpwp
 {
-    internal class Player
+    public class Player
     {
         public int xpos, ypos, width, height, score;
         Rect rect;

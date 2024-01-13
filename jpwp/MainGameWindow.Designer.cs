@@ -19,6 +19,7 @@
             game = new Game();
             escMenu1 = new EscMenu();
             dictDisplay1 = new DictDisplay();
+            quickTimeEvent1 = new QuickTimeEvent();
             SuspendLayout();
             // 
             // mainMenu
@@ -49,10 +50,18 @@
             // 
             dictDisplay1.BackColor = SystemColors.Control;
             dictDisplay1.BorderStyle = BorderStyle.FixedSingle;
-            dictDisplay1.Location = new Point(356, 72);
+            dictDisplay1.Location = new Point(357, 72);
             dictDisplay1.Name = "dictDisplay1";
             dictDisplay1.Size = new Size(524, 585);
             dictDisplay1.TabIndex = 3;
+            // 
+            // quickTimeEvent1
+            // 
+            quickTimeEvent1.BorderStyle = BorderStyle.FixedSingle;
+            quickTimeEvent1.Location = new Point(393, 72);
+            quickTimeEvent1.Name = "quickTimeEvent1";
+            quickTimeEvent1.Size = new Size(465, 585);
+            quickTimeEvent1.TabIndex = 4;
             // 
             // MainGameWindow
             // 
@@ -60,6 +69,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.OldLace;
             ClientSize = new Size(1262, 713);
+            Controls.Add(quickTimeEvent1);
             Controls.Add(dictDisplay1);
             Controls.Add(escMenu1);
             Controls.Add(game);
@@ -73,6 +83,7 @@
             ResumeLayout(false);
         }
 
+        public static QuickTimeEvent quickTimeEvent1;
         public static DictDisplay dictDisplay1;
         public static Game game;
         public static EscMenu escMenu1;
