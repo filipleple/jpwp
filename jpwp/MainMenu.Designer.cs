@@ -59,6 +59,7 @@
             slownik.TabIndex = 2;
             slownik.Text = "słownik";
             slownik.UseVisualStyleBackColor = true;
+            slownik.Click += slownik_Click;
             // 
             // wyjscie
             // 

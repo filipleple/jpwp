@@ -43,5 +43,13 @@ namespace jpwp
         {
             this.ParentForm.Close();
         }
+
+        private void slownik_Click(object sender, EventArgs e)
+        {
+            MainGameWindow.dictDisplay1.Enabled = true;
+            MainGameWindow.dictDisplay1.Visible = true;
+            MainGameWindow.dictDisplay1.BringToFront();
+            MainGameWindow.dictDisplay1.Focus();
+        }
     }
 }

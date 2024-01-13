@@ -66,6 +66,7 @@
             slownik.TabIndex = 5;
             slownik.Text = "słownik";
             slownik.UseVisualStyleBackColor = true;
+            slownik.Click += slownik_Click;
             // 
             // nowagra
             // 

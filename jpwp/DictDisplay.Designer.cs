@@ -64,6 +64,7 @@
             wyjscie.TabIndex = 4;
             wyjscie.Text = "wyjście";
             wyjscie.UseVisualStyleBackColor = true;
+            wyjscie.Click += wyjscie_Click;
             // 
             // DictDisplay
             // 

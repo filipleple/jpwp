@@ -22,6 +22,10 @@ namespace jpwp
             escMenu1.Enabled = false;
             escMenu1.Visible = false;
 
+            dictDisplay1.SendToBack();
+            dictDisplay1.Enabled = false;
+            dictDisplay1.Visible = false;
+
             mainMenu.Focus();
             mainMenu.BringToFront();
 

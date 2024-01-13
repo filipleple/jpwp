@@ -31,5 +31,12 @@ namespace jpwp
         {
 
         }
+
+        private void wyjscie_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Parent.BringToFront();
+            this.Parent.Focus();            
+        }
     }
 }
